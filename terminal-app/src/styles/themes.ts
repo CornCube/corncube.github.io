@@ -10,4 +10,9 @@ export const themes = {
   },
 };
 
+export type Theme = {
+  background: string;
+  foreground: string;
+};
+
 export type ThemeName = keyof typeof themes;
