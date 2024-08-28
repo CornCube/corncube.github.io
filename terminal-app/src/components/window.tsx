@@ -1,38 +1,63 @@
 import React from "react";
+import { useEffect } from "react";
 import Input from "../components/input";
-import Draggable from "react-draggable";
+import { motion, useDragControls } from "framer-motion";
 import { Theme } from "../styles/themes";
+import { TitleBar } from "./titlebar";
 
 interface WindowProps {
   theme: Theme;
+  constraintsRef: any;
 }
 
-export const TerminalWindow: React.FC<WindowProps> = ({ theme }) => {
+export const TerminalWindow: React.FC<WindowProps> = ({
+  theme,
+  constraintsRef,
+}) => {
   const inputRef = React.useRef<HTMLTextAreaElement>(null);
+  const dragControls = useDragControls();
 
   const handleClick = () => {
     inputRef.current?.focus();
   };
 
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, []);
+
   return (
-    <Draggable bounds="div" handle="strong">
-      <div>
-        <strong>draggable</strong>
-        <div
-          onClick={handleClick}
-          style={{
-            height: "80vh",
-            width: "80vw",
-            backgroundColor: theme.foreground,
-            color: "#9eacb8",
-            display: "flex",
-            border: "1px solid #292929",
-            borderRadius: "1px",
-          }}
-        >
-          <Input inputRef={inputRef} />
-        </div>
+    <motion.div
+      drag
+      dragListener={false}
+      dragConstraints={constraintsRef}
+      dragTransition={{ power: 0.6 }}
+      dragControls={dragControls}
+      style={{
+        overflow: "hidden",
+        height: "80vh",
+        width: "80vw",
+        border: "1px solid #292929",
+        borderRadius: "1px",
+        backgroundColor: theme.foreground,
+      }}
+    >
+      <TitleBar dragControls={dragControls} />
+      <div
+        onClick={handleClick}
+        style={{
+          height: "100%",
+          width: "100%",
+          color: "#9eacb8",
+          display: "flex",
+          overflow: "hidden",
+        }}
+      >
+        <Input inputRef={inputRef} />
       </div>
-    </Draggable>
+    </motion.div>
   );
 };

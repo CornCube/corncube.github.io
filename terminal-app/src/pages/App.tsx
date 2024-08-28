@@ -1,10 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import "../styles/terminal.css";
 import { themes, ThemeName } from "../styles/themes";
 import { TerminalWindow } from "../components/window";
 
 function App() {
   const [currentTheme, setCurrentTheme] = useState<ThemeName>("dark");
+
+  const constraintsRef = useRef(null);
 
   useEffect(() => {
     console.log("theme changed");
@@ -19,6 +21,7 @@ function App() {
 
   return (
     <div
+      ref={constraintsRef}
       style={{
         height: "100vh",
         width: "100vw",
@@ -28,7 +31,7 @@ function App() {
         backgroundColor: theme.background,
       }}
     >
-      <TerminalWindow theme={theme} />
+      <TerminalWindow theme={theme} constraintsRef={constraintsRef} />
     </div>
   );
 }
