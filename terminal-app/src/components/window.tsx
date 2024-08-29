@@ -1,21 +1,20 @@
 import React from "react";
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
 import Input from "../components/input";
 import { motion, useDragControls } from "framer-motion";
-import { Theme } from "../styles/themes";
 import { TitleBar } from "./titlebar";
+import { themes } from "../styles/themes";
+import { ThemeContext } from "../context/themecontext";
 
 interface WindowProps {
-  theme: Theme;
   constraintsRef: any;
 }
 
-export const TerminalWindow: React.FC<WindowProps> = ({
-  theme,
-  constraintsRef,
-}) => {
+export const TerminalWindow: React.FC<WindowProps> = ({ constraintsRef }) => {
   const inputRef = React.useRef<HTMLTextAreaElement>(null);
   const dragControls = useDragControls();
+  const themeValue = useContext(ThemeContext);
+  const theme = themes[themeValue.theme];
 
   const handleClick = () => {
     inputRef.current?.focus();

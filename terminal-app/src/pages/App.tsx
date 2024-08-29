@@ -1,23 +1,13 @@
-import { useState, useEffect, useRef } from "react";
+import { useContext, useRef } from "react";
 import "../styles/terminal.css";
-import { themes, ThemeName } from "../styles/themes";
+import { themes } from "../styles/themes";
 import { TerminalWindow } from "../components/window";
+import { ThemeSwitcher } from "../components/themeswitcher";
+import { ThemeContext } from "../context/themecontext";
 
 function App() {
-  const [currentTheme, setCurrentTheme] = useState<ThemeName>("dark");
-
+  const theme = useContext(ThemeContext);
   const constraintsRef = useRef(null);
-
-  useEffect(() => {
-    console.log("theme changed");
-  }, [currentTheme]);
-
-  // @ts-ignore
-  const changeTheme = (newTheme: ThemeName) => {
-    setCurrentTheme(newTheme);
-  };
-
-  const theme = themes[currentTheme];
 
   return (
     <div
@@ -28,10 +18,11 @@ function App() {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: theme.background,
+        backgroundColor: themes[theme.theme].background,
       }}
     >
-      <TerminalWindow theme={theme} constraintsRef={constraintsRef} />
+      <ThemeSwitcher />
+      <TerminalWindow constraintsRef={constraintsRef} />
     </div>
   );
 }

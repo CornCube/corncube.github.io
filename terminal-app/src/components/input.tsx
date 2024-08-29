@@ -64,6 +64,7 @@ export const Input: React.FC<InputProps> = ({ inputRef }) => {
           whiteSpace: "pre-wrap",
           flex: 1,
         }}
+        spellCheck="false"
       />
     </div>
   );

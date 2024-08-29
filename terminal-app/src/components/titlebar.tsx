@@ -1,5 +1,7 @@
+import { DragControls } from "framer-motion";
+
 interface TitleBarProps {
-  dragControls: any;
+  dragControls: DragControls;
 }
 
 export const TitleBar: React.FC<TitleBarProps> = ({ dragControls }) => {

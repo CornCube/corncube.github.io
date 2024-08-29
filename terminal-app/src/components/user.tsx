@@ -7,6 +7,7 @@ import {
   faSafari,
   faInternetExplorer,
 } from "@fortawesome/free-brands-svg-icons";
+import { faQuestionCircle } from "@fortawesome/free-regular-svg-icons";
 
 export const UserContext = () => {
   function getBrowser() {
@@ -49,6 +50,7 @@ export const UserContext = () => {
     Opera: faOpera,
     Safari: faSafari,
     "Internet Explorer": faInternetExplorer,
+    Unknown: faQuestionCircle,
   };
 
   const icon = browserIcons[browser] || faFirefox;
