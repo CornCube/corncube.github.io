@@ -9,7 +9,7 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { faQuestionCircle } from "@fortawesome/free-regular-svg-icons";
 
-export const UserContext = () => {
+export const getUserLine = () => {
   function getBrowser() {
     const userAgent = navigator.userAgent;
     let browser = "Unknown";
@@ -56,14 +56,12 @@ export const UserContext = () => {
   const icon = browserIcons[browser] || faFirefox;
 
   return (
-    <div>
-      <span style={{ color: "lightblue" }}>~</span>
+    <>
+      <span style={{ color: "#7ebab3" }}>~</span>
       <span style={{ color: "#9eacb8" }}> via </span>
       <span>
         <FontAwesomeIcon icon={icon} style={{ marginBottom: "-2px" }} />
       </span>
-    </div>
+    </>
   );
 };
-
-export default UserContext;

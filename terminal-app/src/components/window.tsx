@@ -11,7 +11,7 @@ interface WindowProps {
 }
 
 export const TerminalWindow: React.FC<WindowProps> = ({ constraintsRef }) => {
-  const inputRef = React.useRef<HTMLTextAreaElement>(null);
+  const inputRef = React.useRef<HTMLDivElement>(null);
   const dragControls = useDragControls();
   const themeValue = useContext(ThemeContext);
   const theme = themes[themeValue.theme];
@@ -38,7 +38,7 @@ export const TerminalWindow: React.FC<WindowProps> = ({ constraintsRef }) => {
       style={{
         overflow: "hidden",
         height: "80vh",
-        width: "80vw",
+        width: "70vw",
         border: "1px solid #292929",
         borderRadius: "1px",
         backgroundColor: theme.foreground,
@@ -48,7 +48,7 @@ export const TerminalWindow: React.FC<WindowProps> = ({ constraintsRef }) => {
       <div
         onClick={handleClick}
         style={{
-          height: "100%",
+          height: "90%",
           width: "100%",
           color: "#9eacb8",
           display: "flex",
