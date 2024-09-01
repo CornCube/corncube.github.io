@@ -80,13 +80,13 @@ export const Input: React.FC<InputProps> = ({ inputRef }) => {
         overflowY: "auto",
       }}
     >
-      <div>
+      <ul style={{ listStyleType: "none" }}>
         {history.map((data, index) => (
           <React.Fragment key={index}>
             <li>{data}</li>
           </React.Fragment>
         ))}
-      </div>
+      </ul>
       <div style={{ display: "flex" }}>
         <span style={{ color: "greenyellow" }}>&gt;&nbsp;</span>
         <div
