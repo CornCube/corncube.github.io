@@ -2,7 +2,6 @@ import { useContext, useRef } from "react";
 import "../styles/terminal.css";
 import { themes } from "../styles/themes";
 import { TerminalWindow } from "../components/window";
-import { ThemeSwitcher } from "../components/themeswitcher";
 import { ThemeContext } from "../context/themecontext";
 
 function App() {
@@ -21,7 +20,6 @@ function App() {
         backgroundColor: themes[theme.theme].background,
       }}
     >
-      <ThemeSwitcher />
       <TerminalWindow constraintsRef={constraintsRef} />
     </div>
   );

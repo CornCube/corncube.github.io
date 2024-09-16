@@ -1,6 +1,7 @@
 import React from "react";
 import { useRef, useState, useEffect } from "react";
 import { getUserLine } from "./userline";
+import { GetCommandOutput } from "./commands";
 
 interface InputProps {
   inputRef: React.RefObject<HTMLDivElement>;
@@ -8,8 +9,13 @@ interface InputProps {
 
 export const Input: React.FC<InputProps> = ({ inputRef }) => {
   const [input, setInput] = useState("");
-  const [history, setHistory] = useState([getUserLine()]);
+  const [history, setHistory] = useState([
+    "Welcome! This page is an imitation of my Windows Terminal setup in React + Vite, written in TypeScript.\n\nType 'help' to see the list of available commands.\nType 'neofetch' to display a summary.\n\n",
+    getUserLine(),
+  ]);
   const containerRef = useRef<HTMLDivElement>(null);
+
+  const executeCommand = GetCommandOutput();
 
   useEffect(() => {
     //3️⃣ bring the last item into view
@@ -21,14 +27,18 @@ export const Input: React.FC<InputProps> = ({ inputRef }) => {
       // submit
       e.preventDefault();
 
-      const output = `output of ${input}`;
+      const inputArray = input.split(" ");
+      const commandName = inputArray[0];
+      const args = inputArray.slice(1);
+
+      const output = executeCommand(commandName, args);
 
       setHistory((prevHistory: any) => [
         ...prevHistory,
         <span style={{ color: "greenyellow" }}>
           &gt; <span style={{ color: "orange" }}>{input}</span>
         </span>,
-        output,
+        typeof output === "string" ? <span>{output}</span> : output,
         "\n",
         getUserLine(),
       ]);
