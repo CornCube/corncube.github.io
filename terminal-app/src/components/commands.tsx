@@ -1,8 +1,3 @@
-// experience
-// education
-// coursework
-// projects
-
 import { useContext } from "react";
 import { ThemeContext } from "../context/themecontext";
 
@@ -25,8 +20,6 @@ export const GetCommandOutput = () => {
   :::::::--====%==%######*-*+==:
   ::::---=-=#%%%%**###**+#*#*###
   :::-=--:+%##%%%%++*-=+*#%#####
-  ::----=#%%%%%%%%%*==+#%%##%###
-  ---=+#%%%%%%%@@@%%%%%%%%%%%%##
   `;
 
   const commands = {
@@ -112,7 +105,7 @@ export const GetCommandOutput = () => {
     github: () => {
       return (
         <div>
-          My github profile (and the source for this website) is:{" "}
+          My github profile is:{" "}
           <a
             href="https://github.com/CornCube"
             style={{ color: "orange" }}
@@ -182,12 +175,177 @@ export const GetCommandOutput = () => {
         "Vite",
         "Selenium",
         "Flask",
+        "Github/Gitlab",
+        "Jira",
       ];
-      let str = "I am proficient in the following languages:\n\n";
+      let str = "I am proficient with the following tools:\n\n";
       for (let i = 0; i < toolsArr.length; i++) {
         str += toolsArr[i] + "\n";
       }
       return str;
+    },
+    experience: () => {
+      return (
+        <div>
+          <br />
+          <strong>Iron Galaxy Studios</strong>
+          <br />
+          <i>Software Development Intern</i> (May 2024 - August 2024)
+          <ul>
+            <li>
+              - Developed a brick breaker clone using 68K assembly with the
+              EASy68K simulator (
+              <a
+                href="https://github.com/CornCube/68k-brickbreaker"
+                style={{ color: "orange" }}
+                target="_blank"
+              >
+                here
+              </a>
+              )
+            </li>
+            <li>
+              - Fixed several UI bugs in an unreleased game that utilizes C++
+              and Unreal Engine 4
+            </li>
+            <li>
+              - Implemented various online-facing screens based on artist
+              mockups
+            </li>
+          </ul>
+          <br />
+          <strong>IMC Companies</strong>
+          <br />
+          <i>Software Development Intern</i> (May 2022 - August 2023)
+          <ul>
+            <li>
+              - Created an automated process running in a docker-in-docker setup
+              that logs into a website, obtains relevant data, and updates an
+              internal website with the new data
+            </li>
+            <li>
+              - Devised a Selenium script to circumvent Google's reCAPTCHA v2,
+              which involved creating an image classification model off of the
+              Resnet-18 architecture
+            </li>
+            <li>
+              - Designed a file logging system utilizing Apache Kafka to flag
+              outdated files
+            </li>
+            <li>
+              - Built multiple ReactJS frontend pages with Ant Design and Redux
+              for features like shipment timeline views, file logging, and
+              process resubmission
+            </li>
+            <li>
+              - Designed and implemented FastAPI endpoints integrated with
+              PostgreSQL and GraphQL to power key functionalities, including an
+              optimized resending process and a responsive React search bar
+              component
+            </li>
+          </ul>
+        </div>
+      );
+    },
+    education: () => {
+      return (
+        <div>
+          <br />
+          <strong>Vanderbilt University, School of Engineering</strong> (August
+          2020 - May 2024)
+          <br />
+          Bachelor of Science in Computer Science & Mathematics, Minor in Data
+          Science
+        </div>
+      );
+    },
+    coursework: () => {
+      const coursesArr = [
+        "Program Design and Data Structures",
+        "Algorithms",
+        "Data Visualization",
+        "Computer Networks",
+        "Database Management",
+        "Autonomous Vehicles",
+        "Applied Machine Learning",
+        "Reverse Engineering for Cybersecurity",
+        "Deep Learning",
+        "Operating Systems",
+        "Programming Languages",
+        "Fundamentals of Data Science",
+        "Calculus I-III",
+        "Ordinary Differential Equations",
+        "Linear Algebra",
+        "Applied Statistics",
+      ];
+      let str = "Here's an overview of the courses I've taken:\n\n";
+      for (let i = 0; i < coursesArr.length; i++) {
+        str += coursesArr[i] + "\n";
+      }
+      return str;
+    },
+    projects: () => {
+      return (
+        <div>
+          <br />
+          <ul>
+            <li>
+              <a
+                href="https://github.com/CornCube/captcha-solver"
+                style={{ color: "orange" }}
+                target="_blank"
+              >
+                captcha-solver
+              </a>{" "}
+              - a project that uses image classification to break Google
+              reCAPTCHA v2
+            </li>
+            <li>
+              <a
+                href="https://github.com/CornCube/earthlink-app"
+                style={{ color: "orange" }}
+                target="_blank"
+              >
+                earthlink-app
+              </a>{" "}
+              - a social networking app written in Kotlin, allowing users to
+              leave messages in geographical locations
+            </li>
+            <li>
+              <a
+                href="https://github.com/CornCube/68k-brickbreaker"
+                style={{ color: "orange" }}
+                target="_blank"
+              >
+                68k-brickbreaker
+              </a>{" "}
+              - a brick breaker clone written from the ground up in 68k
+              assembly, along with a level editor in Python
+            </li>
+            <li>
+              <a
+                href="https://github.com/CornCube/tempo-shift"
+                style={{ color: "orange" }}
+                target="_blank"
+              >
+                tempo-shift
+              </a>{" "}
+              - a Python utility that lets users download/convert songs into
+              different bpms
+            </li>
+            <li>
+              <a
+                href="https://github.com/CornCube/corncube.github.io"
+                style={{ color: "orange" }}
+                target="_blank"
+              >
+                personal-website
+              </a>{" "}
+              - this website!
+            </li>
+          </ul>
+        </div>
+      );
     },
     theme: (args: string[]) => {
       if (args.length === 0 || (args[0] !== "light" && args[0] !== "dark")) {
