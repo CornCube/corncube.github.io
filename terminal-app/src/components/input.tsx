@@ -79,6 +79,7 @@ export const Input: React.FC<InputProps> = ({ inputRef }) => {
   return (
     <div
       ref={containerRef}
+      className="scroller"
       style={{
         margin: 8,
         width: "100%",
