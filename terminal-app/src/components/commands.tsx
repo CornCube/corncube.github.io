@@ -24,11 +24,11 @@ export const GetCommandOutput = () => {
 
   const commands = {
     about: () => {
-      return "Hello! I'm Manas Malla.\nThanks for checking out my terminal styled page!\nEnter 'help' for a list of available commands.";
+      return "Hello! I'm Manas Malla.\nThanks for checking out my terminal styled page!\nType 'help' for the full command list.";
     },
     help: () => {
-      const commandList = Object.keys(commands).join("\n");
-      return `Here are all the available commands: \n\n${commandList}`;
+      const commandList = Object.keys(commands).join(" ");
+      return `Need some guidance? Here are all the available commands: \n\n${commandList}`;
     },
     neofetch: () => {
       return (
@@ -105,7 +105,7 @@ export const GetCommandOutput = () => {
     github: () => {
       return (
         <div>
-          My github profile is:{" "}
+          Sure, here's my github profile:{" "}
           <a
             href="https://github.com/CornCube"
             style={{ color: "orange" }}
@@ -119,7 +119,7 @@ export const GetCommandOutput = () => {
     linkedin: () => {
       return (
         <div>
-          My linkedin profile is:{" "}
+          Find me on LinkedIn:{" "}
           <a
             href="https://www.linkedin.com/in/manas-malla/"
             style={{ color: "orange" }}
@@ -157,32 +157,27 @@ export const GetCommandOutput = () => {
         "SQL",
         "R",
       ];
-      let str = "I am proficient in the following languages:\n\n";
-      for (let i = 0; i < languagesArr.length; i++) {
-        str += languagesArr[i] + "\n";
-      }
-      return str;
+      let intro = "I code in these languages:";
+      return formatArray(intro, languagesArr);
     },
     tools: () => {
       const toolsArr = [
         "PyTorch",
         "FastAPI",
         "Docker",
-        "Apache Kafka",
+        "Kafka",
+        "Redux",
         "Express",
         "NestJS",
         "React",
         "Vite",
         "Selenium",
         "Flask",
-        "Github/Gitlab",
+        "Git",
         "Jira",
       ];
-      let str = "I am proficient with the following tools:\n\n";
-      for (let i = 0; i < toolsArr.length; i++) {
-        str += toolsArr[i] + "\n";
-      }
-      return str;
+      let intro = "These are some of the tools in my toolbox:";
+      return formatArray(intro, toolsArr);
     },
     experience: () => {
       return (
@@ -278,15 +273,14 @@ export const GetCommandOutput = () => {
         "Linear Algebra",
         "Applied Statistics",
       ];
-      let str = "Here's an overview of the courses I've taken:\n\n";
-      for (let i = 0; i < coursesArr.length; i++) {
-        str += coursesArr[i] + "\n";
-      }
-      return str;
+      let intro = "Here's an overview of the courses I've taken:";
+      return formatArray(intro, coursesArr);
     },
     projects: () => {
       return (
         <div>
+          Check out a few things I've been working on:
+          <br />
           <br />
           <ul>
             <li>
@@ -367,6 +361,15 @@ export const GetCommandOutput = () => {
         return args.join(" ");
       }
     },
+  };
+
+  const formatArray = (intro: string, arr: string[]) => {
+    let str = `${intro}\n\n`;
+    for (let i = 0; i < arr.length; i++) {
+      str += arr[i];
+      i === arr.length - 1 ? str : (str += "\n");
+    }
+    return str;
   };
 
   const executeCommand = (commandName: string, args: string[]) => {
