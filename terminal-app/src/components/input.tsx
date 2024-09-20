@@ -10,7 +10,7 @@ interface InputProps {
 export const Input: React.FC<InputProps> = ({ inputRef }) => {
   const [input, setInput] = useState("");
   const [history, setHistory] = useState([
-    "Welcome! This page is an imitation of my Windows Terminal setup in React + Vite, written in TypeScript.\n\nType 'help' to see the list of available commands.\nType 'neofetch' to display a summary.\n\n",
+    "Welcome! This page is an imitation of my Windows Terminal setup in React + Vite, written in TypeScript.\n\nType 'help' to see the list of available commands.\nType 'summary' to display a summary.\n\n",
     getUserLine(),
   ]);
   const containerRef = useRef<HTMLDivElement>(null);

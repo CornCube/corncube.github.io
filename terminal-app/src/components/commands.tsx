@@ -30,7 +30,7 @@ export const GetCommandOutput = () => {
       const commandList = Object.keys(commands).join(" ");
       return `Need some guidance? Here are all the available commands: \n\n${commandList}`;
     },
-    neofetch: () => {
+    summary: () => {
       return (
         <div style={{ display: "flex", alignItems: "flex-start" }}>
           <pre style={{ marginRight: "15px" }}>{ascii}</pre>
