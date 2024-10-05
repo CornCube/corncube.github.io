@@ -27,8 +27,25 @@ export const GetCommandOutput = () => {
       return "Hello! I'm Manas Malla.\nThanks for checking out my terminal styled page!\nType 'help' for the full command list.";
     },
     help: () => {
-      const commandList = Object.keys(commands).join(" ");
-      return `Need some guidance? Here are all the available commands: \n\n${commandList}`;
+      const list = [
+        "about",
+        "help",
+        "summary",
+        "email",
+        "github",
+        "linkedin",
+        "resume",
+        "languages",
+        "tools",
+        "experience",
+        "education",
+        "coursework",
+        "projects",
+        "theme",
+        "echo",
+      ];
+      const commandList = list.join(" ");
+      return `Need some guidance? Here are all the main commands: \n\n${commandList}`;
     },
     summary: () => {
       return (
@@ -176,7 +193,7 @@ export const GetCommandOutput = () => {
         "Git",
         "Jira",
       ];
-      let intro = "These are some of the tools in my toolbox:";
+      let intro = "These are some of the tools I've used before:";
       return formatArray(intro, toolsArr);
     },
     experience: () => {
@@ -360,6 +377,81 @@ export const GetCommandOutput = () => {
       } else {
         return args.join(" ");
       }
+    },
+    cd: () => {
+      return "this is getting a little out of scope";
+    },
+    pwd: () => {
+      return "/home/mmalla";
+    },
+    ls: () => {
+      return "theres nothing here, sorry";
+    },
+    hx: () => {
+      return "you have good taste in text editors";
+    },
+    vi: () => {
+      return "how do i exit???";
+    },
+    nvim: () => {
+      return "(•_•)   (⌐■_■)\n vi    cooler vi";
+    },
+    sudo: () => {
+      return "whatre you trying to pull here huh";
+    },
+    rm: (args: string[]) => {
+      if (args[0] === "-rf") {
+        return "WAIT WAIT WAIT STOP";
+      } else {
+        return "please dont break anything D:";
+      }
+    },
+    mkdir: () => {
+      return "dont have the budget for this one, sorry";
+    },
+    mv: () => {
+      return "theres nothing to rename, sorry";
+    },
+    nc: () => {
+      return "what do you think this is, a ctf?";
+    },
+    curl: () => {
+      return "(•̀ᴗ•́)و";
+    },
+    gpg: () => {
+      return "i promise, its not a ctf";
+    },
+    cat: () => {
+      return "meow";
+    },
+    ping: () => {
+      return "pong!";
+    },
+    kill: (args: string[]) => {
+      if (args[0] === "520509") {
+        return <span style={{ color: "red" }}>you monster</span>;
+      }
+      return "... why did you do that...";
+    },
+    ps: () => {
+      return "   PID TTY          TIME CMD\n520509 pts/2    00:00:23 robert";
+    },
+    grep: () => {
+      return "theres nothing here, heres a grape instead: O";
+    },
+    man: (args: string[]) => {
+      if (args[0] === "please") {
+        const commandList = Object.keys(commands).join(" ");
+        return `alright fine, here are all the available commands: \n\n${commandList}`;
+      } else {
+        return "i added a lot of commands to this, if you really want the whole list ask nicely";
+      }
+    },
+    whoami: () => {
+      return "who are you?";
+    },
+    chmod: () => {
+      return "i give you permission to keep typing random commands into this";
     },
   };
 

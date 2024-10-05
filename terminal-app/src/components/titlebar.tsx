@@ -2,9 +2,10 @@ import { DragControls } from "framer-motion";
 
 interface TitleBarProps {
   dragControls: DragControls;
+  title: string;
 }
 
-export const TitleBar: React.FC<TitleBarProps> = ({ dragControls }) => {
+export const TitleBar: React.FC<TitleBarProps> = ({ dragControls, title }) => {
   return (
     <div
       onPointerDown={(e) => dragControls.start(e)}
@@ -16,7 +17,7 @@ export const TitleBar: React.FC<TitleBarProps> = ({ dragControls }) => {
         userSelect: "none",
       }}
     >
-      <strong>Terminal</strong>
+      <strong>{title}</strong>
     </div>
   );
 };

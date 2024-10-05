@@ -6,7 +6,7 @@ import { TitleBar } from "./titlebar";
 import { themes } from "../styles/themes";
 import { ThemeContext } from "../context/themecontext";
 
-interface WindowProps {
+export interface WindowProps {
   constraintsRef: any;
 }
 
@@ -20,6 +20,17 @@ export const TerminalWindow: React.FC<WindowProps> = ({ constraintsRef }) => {
     inputRef.current?.focus();
   };
 
+  const zClick = () => {
+    const noteElement = document.getElementById("note");
+    const terminalElement = document.getElementById("terminal");
+    if (terminalElement) {
+      terminalElement.style.zIndex = "1";
+      if (noteElement) {
+        noteElement.style.zIndex = "0";
+      }
+    }
+  };
+
   useEffect(() => {
     document.body.style.overflow = "hidden";
 
@@ -30,22 +41,28 @@ export const TerminalWindow: React.FC<WindowProps> = ({ constraintsRef }) => {
 
   return (
     <motion.div
+      id="terminal"
       drag
       dragListener={false}
       dragConstraints={constraintsRef}
       dragTransition={{ power: 0.6 }}
       dragControls={dragControls}
+      onPointerDown={zClick}
       style={{
         overflow: "hidden",
+        zIndex: 0,
         height: "80vh",
         width: "70vw",
+        position: "relative",
+        right: "11%",
         border: "1px solid #292929",
         borderRadius: "1px",
         backgroundColor: theme.foreground,
       }}
     >
-      <TitleBar dragControls={dragControls} />
+      <TitleBar dragControls={dragControls} title="Terminal" />
       <div
+        id="note"
         onClick={handleClick}
         style={{
           height: "90%",
