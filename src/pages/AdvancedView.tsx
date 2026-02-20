@@ -1,11 +1,11 @@
 import { useContext, useRef } from "react";
-import "../styles/terminal.css";
-import { themes } from "../styles/themes";
-import { TerminalWindow } from "../components/window";
 import { ThemeContext } from "../context/themecontext";
+import { themes } from "../styles/themes";
 import { Note } from "../components/note";
+import { TerminalWindow } from "../components/window";
+import "../styles/terminal.css";
 
-function App() {
+export const Advanced = () => {
   const theme = useContext(ThemeContext);
   const constraintsRef = useRef(null);
 
@@ -26,6 +26,4 @@ function App() {
       <TerminalWindow constraintsRef={constraintsRef} />
     </div>
   );
-}
-
-export default App;
+};
